@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Agendamentos - Clínica de Saúde Mental{% endblock %}
+
+{% block content %}
+<h2>Agendamentos</h2>
+<a href="{{ url_for('agendamentos.novo_agendamento') }}" class="btn btn-primary">+ Novo Agendamento</a>
+
+{% if agendamentos %}
+<table>
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Paciente</th>
+            <th>Profissional</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for agendamento in agendamentos %}
+        <tr>
+            <td>{{ agendamento.data_agendamento.strftime('%d/%m/%Y %H:%M') }}</td>
+            <td>{{ agendamento.paciente.nome }}</td>
+            <td>{{ agendamento.profissional.nome }}</td>
+            <td>
+                <span style="padding: 5px 10px; border-radius: 3px; background-color: {% if agendamento.status == 'Agendado' %}#cfe2ff{% elif agendamento.status == 'Realizado' %}#d1e7dd{% else %}#f8d7da{% endif %}; color: {% if agendamento.status == 'Agendado' %}#084298{% elif agendamento.status == 'Realizado' %}#0f5132{% else %}#842029{% endif %};">
+                    {{ agendamento.status }}
+                </span>
+            </td>
+            <td>
+                <a href="{{ url_for('agendamentos.ver_agendamento', id=agendamento.id) }}" class="btn btn-secondary">Ver</a>
+                <a href="{{ url_for('agendamentos.editar_agendamento', id=agendamento.id) }}" class="btn btn-secondary">Editar</a>
+                <form method="POST" action="{{ url_for('agendamentos.deletar_agendamento', id=agendamento.id) }}" style="display:inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja deletar este agendamento?')">Deletar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="no-data">
+    <p>Nenhum agendamento criado. <a href="{{ url_for('agendamentos.novo_agendamento') }}">Clique aqui para criar um novo agendamento.</a></p>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Nova Consulta - Clínica de Saúde Mental{% endblock %}
+
+{% block content %}
+<h2>Nova Consulta</h2>
+
+<div class="card">
+    <form method="POST">
+        <div class="form-group">
+            <label for="paciente_id">Paciente *</label>
+            <select id="paciente_id" name="paciente_id" required>
+                <option value="">Selecione um paciente</option>
+                {% for paciente in pacientes %}
+                <option value="{{ paciente.id }}">{{ paciente.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="profissional_id">Profissional *</label>
+            <select id="profissional_id" name="profissional_id" required>
+                <option value="">Selecione um profissional</option>
+                {% for profissional in profissionais %}
+                <option value="{{ profissional.id }}">{{ profissional.nome }} ({{ profissional.especialidade }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="data_consulta">Data e Hora da Consulta *</label>
+            <input type="datetime-local" id="data_consulta" name="data_consulta" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="diagnostico">Diagnóstico</label>
+            <textarea id="diagnostico" name="diagnostico"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="prescricao">Prescrição</label>
+            <textarea id="prescricao" name="prescricao"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="observacoes">Observações</label>
+            <textarea id="observacoes" name="observacoes"></textarea>
+        </div>
+        
+        <div class="form-actions">
+            <a href="{{ url_for('consultas.listar_consultas') }}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-success">Registrar Consulta</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

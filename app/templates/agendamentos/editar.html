@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Agendamento - Clínica de Saúde Mental{% endblock %}
+
+{% block content %}
+<h2>Editar Agendamento</h2>
+
+<div class="card">
+    <form method="POST">
+        <div class="form-group">
+            <label for="data_agendamento">Data e Hora do Agendamento *</label>
+            <input type="datetime-local" id="data_agendamento" name="data_agendamento" value="{{ agendamento.data_agendamento.strftime('%Y-%m-%dT%H:%M') }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="status">Status *</label>
+            <select id="status" name="status" required>
+                <option value="Agendado" {% if agendamento.status == 'Agendado' %}selected{% endif %}>Agendado</option>
+                <option value="Realizado" {% if agendamento.status == 'Realizado' %}selected{% endif %}>Realizado</option>
+                <option value="Cancelado" {% if agendamento.status == 'Cancelado' %}selected{% endif %}>Cancelado</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="observacoes">Observações</label>
+            <textarea id="observacoes" name="observacoes">{{ agendamento.observacoes or '' }}</textarea>
+        </div>
+        
+        <div class="form-actions">
+            <a href="{{ url_for('agendamentos.ver_agendamento', id=agendamento.id) }}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-success">Salvar Alterações</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

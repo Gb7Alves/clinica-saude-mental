@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Consulta - Clínica de Saúde Mental{% endblock %}
+
+{% block content %}
+<h2>Detalhes da Consulta</h2>
+
+<div class="card">
+    <div class="card-title">Informações da Consulta</div>
+    <p><strong>Paciente:</strong> <a href="{{ url_for('pacientes.ver_paciente', id=consulta.paciente.id) }}">{{ consulta.paciente.nome }}</a></p>
+    <p><strong>Profissional:</strong> <a href="{{ url_for('profissionais.ver_profissional', id=consulta.profissional.id) }}">{{ consulta.profissional.nome }}</a></p>
+    <p><strong>Data e Hora:</strong> {{ consulta.data_consulta.strftime('%d/%m/%Y %H:%M') }}</p>
+    <p><strong>Data de Registro:</strong> {{ consulta.data_registro.strftime('%d/%m/%Y %H:%M') }}</p>
+    
+    {% if consulta.diagnostico %}
+    <p><strong>Diagnóstico:</strong></p>
+    <p>{{ consulta.diagnostico }}</p>
+    {% endif %}
+    
+    {% if consulta.prescricao %}
+    <p><strong>Prescrição:</strong></p>
+    <p>{{ consulta.prescricao }}</p>
+    {% endif %}
+    
+    {% if consulta.observacoes %}
+    <p><strong>Observações:</strong></p>
+    <p>{{ consulta.observacoes }}</p>
+    {% endif %}
+    
+    <div class="form-actions">
+        <a href="{{ url_for('consultas.editar_consulta', id=consulta.id) }}" class="btn btn-primary">Editar</a>
+        <form method="POST" action="{{ url_for('consultas.deletar_consulta', id=consulta.id) }}" style="display:inline;">
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja deletar esta consulta?')">Deletar</button>
+        </form>
+        <a href="{{ url_for('consultas.listar_consultas') }}" class="btn btn-secondary">Voltar</a>
+    </div>
+</div>
+{% endblock %}

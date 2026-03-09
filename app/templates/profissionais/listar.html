@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Profissionais - Clínica de Saúde Mental{% endblock %}
+
+{% block content %}
+<h2>Profissionais</h2>
+<a href="{{ url_for('profissionais.novo_profissional') }}" class="btn btn-primary">+ Novo Profissional</a>
+
+{% if profissionais %}
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Especialidade</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for profissional in profissionais %}
+        <tr>
+            <td>{{ profissional.nome }}</td>
+            <td>{{ profissional.cpf }}</td>
+            <td>{{ profissional.especialidade }}</td>
+            <td>{{ profissional.telefone }}</td>
+            <td>{{ profissional.email or '-' }}</td>
+            <td>
+                <a href="{{ url_for('profissionais.ver_profissional', id=profissional.id) }}" class="btn btn-secondary">Ver</a>
+                <a href="{{ url_for('profissionais.editar_profissional', id=profissional.id) }}" class="btn btn-secondary">Editar</a>
+                <form method="POST" action="{{ url_for('profissionais.deletar_profissional', id=profissional.id) }}" style="display:inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja deletar este profissional?')">Deletar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="no-data">
+    <p>Nenhum profissional cadastrado. <a href="{{ url_for('profissionais.novo_profissional') }}">Clique aqui para cadastrar um novo profissional.</a></p>
+</div>
+{% endif %}
+{% endblock %}

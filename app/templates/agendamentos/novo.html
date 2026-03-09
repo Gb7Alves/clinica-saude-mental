@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Novo Agendamento - Clínica de Saúde Mental{% endblock %}
+
+{% block content %}
+<h2>Novo Agendamento</h2>
+
+<div class="card">
+    <form method="POST">
+        <div class="form-group">
+            <label for="paciente_id">Paciente *</label>
+            <select id="paciente_id" name="paciente_id" required>
+                <option value="">Selecione um paciente</option>
+                {% for paciente in pacientes %}
+                <option value="{{ paciente.id }}">{{ paciente.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="profissional_id">Profissional *</label>
+            <select id="profissional_id" name="profissional_id" required>
+                <option value="">Selecione um profissional</option>
+                {% for profissional in profissionais %}
+                <option value="{{ profissional.id }}">{{ profissional.nome }} ({{ profissional.especialidade }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="data_agendamento">Data e Hora do Agendamento *</label>
+            <input type="datetime-local" id="data_agendamento" name="data_agendamento" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="status">Status *</label>
+            <select id="status" name="status" required>
+                <option value="Agendado">Agendado</option>
+                <option value="Realizado">Realizado</option>
+                <option value="Cancelado">Cancelado</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="observacoes">Observações</label>
+            <textarea id="observacoes" name="observacoes"></textarea>
+        </div>
+        
+        <div class="form-actions">
+            <a href="{{ url_for('agendamentos.listar_agendamentos') }}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-success">Criar Agendamento</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

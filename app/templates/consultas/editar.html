@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Consulta - Clínica de Saúde Mental{% endblock %}
+
+{% block content %}
+<h2>Editar Consulta</h2>
+
+<div class="card">
+    <form method="POST">
+        <div class="form-group">
+            <label for="diagnostico">Diagnóstico</label>
+            <textarea id="diagnostico" name="diagnostico">{{ consulta.diagnostico or '' }}</textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="prescricao">Prescrição</label>
+            <textarea id="prescricao" name="prescricao">{{ consulta.prescricao or '' }}</textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="observacoes">Observações</label>
+            <textarea id="observacoes" name="observacoes">{{ consulta.observacoes or '' }}</textarea>
+        </div>
+        
+        <div class="form-actions">
+            <a href="{{ url_for('consultas.ver_consulta', id=consulta.id) }}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-success">Salvar Alterações</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

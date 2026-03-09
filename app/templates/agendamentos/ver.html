@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Agendamento - Clínica de Saúde Mental{% endblock %}
+
+{% block content %}
+<h2>Detalhes do Agendamento</h2>
+
+<div class="card">
+    <div class="card-title">Informações do Agendamento</div>
+    <p><strong>Paciente:</strong> <a href="{{ url_for('pacientes.ver_paciente', id=agendamento.paciente.id) }}">{{ agendamento.paciente.nome }}</a></p>
+    <p><strong>Profissional:</strong> <a href="{{ url_for('profissionais.ver_profissional', id=agendamento.profissional.id) }}">{{ agendamento.profissional.nome }}</a></p>
+    <p><strong>Data e Hora:</strong> {{ agendamento.data_agendamento.strftime('%d/%m/%Y %H:%M') }}</p>
+    <p><strong>Status:</strong> 
+        <span style="padding: 5px 10px; border-radius: 3px; background-color: {% if agendamento.status == 'Agendado' %}#cfe2ff{% elif agendamento.status == 'Realizado' %}#d1e7dd{% else %}#f8d7da{% endif %}; color: {% if agendamento.status == 'Agendado' %}#084298{% elif agendamento.status == 'Realizado' %}#0f5132{% else %}#842029{% endif %};">
+            {{ agendamento.status }}
+        </span>
+    </p>
+    <p><strong>Data de Criação:</strong> {{ agendamento.data_criacao.strftime('%d/%m/%Y %H:%M') }}</p>
+    
+    {% if agendamento.observacoes %}
+    <p><strong>Observações:</strong></p>
+    <p>{{ agendamento.observacoes }}</p>
+    {% endif %}
+    
+    <div class="form-actions">
+        <a href="{{ url_for('agendamentos.editar_agendamento', id=agendamento.id) }}" class="btn btn-primary">Editar</a>
+        <form method="POST" action="{{ url_for('agendamentos.deletar_agendamento', id=agendamento.id) }}" style="display:inline;">
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja deletar este agendamento?')">Deletar</button>
+        </form>
+        <a href="{{ url_for('agendamentos.listar_agendamentos') }}" class="btn btn-secondary">Voltar</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Pacientes - Clínica de Saúde Mental{% endblock %}
+
+{% block content %}
+<h2>Pacientes</h2>
+<a href="{{ url_for('pacientes.novo_paciente') }}" class="btn btn-primary">+ Novo Paciente</a>
+
+{% if pacientes %}
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Data de Cadastro</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for paciente in pacientes %}
+        <tr>
+            <td>{{ paciente.nome }}</td>
+            <td>{{ paciente.cpf }}</td>
+            <td>{{ paciente.telefone }}</td>
+            <td>{{ paciente.email or '-' }}</td>
+            <td>{{ paciente.data_cadastro.strftime('%d/%m/%Y') }}</td>
+            <td>
+                <a href="{{ url_for('pacientes.ver_paciente', id=paciente.id) }}" class="btn btn-secondary">Ver</a>
+                <a href="{{ url_for('pacientes.editar_paciente', id=paciente.id) }}" class="btn btn-secondary">Editar</a>
+                <form method="POST" action="{{ url_for('pacientes.deletar_paciente', id=paciente.id) }}" style="display:inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja deletar este paciente?')">Deletar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="no-data">
+    <p>Nenhum paciente cadastrado. <a href="{{ url_for('pacientes.novo_paciente') }}">Clique aqui para cadastrar um novo paciente.</a></p>
+</div>
+{% endif %}
+{% endblock %}

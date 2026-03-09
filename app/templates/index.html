@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Clínica de Saúde Mental{% endblock %}
+
+{% block content %}
+<h2>Dashboard</h2>
+<p class="text-muted">Bem-vindo ao sistema de gestão da clínica de saúde mental</p>
+
+<div class="dashboard-grid">
+    <div class="dashboard-card">
+        <h3>Total de Pacientes</h3>
+        <div class="number">{{ total_pacientes }}</div>
+    </div>
+    
+    <div class="dashboard-card">
+        <h3>Total de Profissionais</h3>
+        <div class="number">{{ total_profissionais }}</div>
+    </div>
+    
+    <div class="dashboard-card">
+        <h3>Total de Consultas</h3>
+        <div class="number">{{ total_consultas }}</div>
+    </div>
+    
+    <div class="dashboard-card">
+        <h3>Agendamentos Próximos</h3>
+        <div class="number">{{ agendamentos_proximos }}</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-title">Ações Rápidas</div>
+    <div class="actions">
+        <a href="{{ url_for('pacientes.novo_paciente') }}" class="btn btn-primary">+ Novo Paciente</a>
+        <a href="{{ url_for('profissionais.novo_profissional') }}" class="btn btn-primary">+ Novo Profissional</a>
+        <a href="{{ url_for('consultas.nova_consulta') }}" class="btn btn-primary">+ Nova Consulta</a>
+        <a href="{{ url_for('agendamentos.novo_agendamento') }}" class="btn btn-primary">+ Novo Agendamento</a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-title">Sobre o Sistema</div>
+    <p>Este sistema foi desenvolvido para gerenciar os cadastros e agendamentos de uma clínica de saúde mental, incluindo:</p>
+    <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>Cadastro de Pacientes:</strong> Registre informações completas dos pacientes, incluindo histórico médico.</li>
+        <li><strong>Cadastro de Profissionais:</strong> Mantenha dados dos médicos e estagiários.</li>
+        <li><strong>Registro de Consultas:</strong> Documente cada consulta realizada com diagnóstico e prescrição.</li>
+        <li><strong>Agendamentos:</strong> Organize os horários de atendimento de forma eficiente.</li>
+    </ul>
+</div>
+{% endblock %}

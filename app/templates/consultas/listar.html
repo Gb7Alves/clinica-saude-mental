@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Consultas - Clínica de Saúde Mental{% endblock %}
+
+{% block content %}
+<h2>Consultas</h2>
+<a href="{{ url_for('consultas.nova_consulta') }}" class="btn btn-primary">+ Nova Consulta</a>
+
+{% if consultas %}
+<table>
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Paciente</th>
+            <th>Profissional</th>
+            <th>Diagnóstico</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for consulta in consultas %}
+        <tr>
+            <td>{{ consulta.data_consulta.strftime('%d/%m/%Y %H:%M') }}</td>
+            <td>{{ consulta.paciente.nome }}</td>
+            <td>{{ consulta.profissional.nome }}</td>
+            <td>{{ consulta.diagnostico[:50] or '-' }}</td>
+            <td>
+                <a href="{{ url_for('consultas.ver_consulta', id=consulta.id) }}" class="btn btn-secondary">Ver</a>
+                <a href="{{ url_for('consultas.editar_consulta', id=consulta.id) }}" class="btn btn-secondary">Editar</a>
+                <form method="POST" action="{{ url_for('consultas.deletar_consulta', id=consulta.id) }}" style="display:inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja deletar esta consulta?')">Deletar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="no-data">
+    <p>Nenhuma consulta registrada. <a href="{{ url_for('consultas.nova_consulta') }}">Clique aqui para registrar uma nova consulta.</a></p>
+</div>
+{% endif %}
+{% endblock %}
