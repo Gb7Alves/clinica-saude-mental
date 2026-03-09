@@ -50,12 +50,16 @@ pip install -r requirements.txt
 python run.py
 
 # Abra no navegador
-# http://127.0.0.1:5000
+http://127.0.0.1:5000
 
-# Para parar o sistema, pressione CTRL + C no terminal
+# Para parar o sistema pressione CTRL + C
+```
 
-📂 Estrutura do Projeto
+---
 
+## 📂 Estrutura do Projeto
+
+```
 app/
   ├─ __init__.py
   ├─ models.py
@@ -64,8 +68,13 @@ app/
 clinica.db
 requirements.txt
 run.py
+```
 
-📬 Contato
+---
 
+## 📬 Contato
+
+```
 Gabriel Alves
 GitHub: https://github.com/Gb7Alves
+```
