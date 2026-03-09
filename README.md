@@ -1,36 +1,58 @@
 # 🏥 Sistema de Gestão de Clínica de Saúde Mental
 
-[![Python](https://img.shields.io/badge/Python-3.x-blue)](https://www.python.org/) 
-[![Flask](https://img.shields.io/badge/Flask-1.1.2-orange)](https://flask.palletsprojects.com/) 
-[![SQLite](https://img.shields.io/badge/SQLite-3.39.4-lightgrey)](https://www.sqlite.org/) 
+[![Python](https://img.shields.io/badge/Python-3.x-blue)](https://www.python.org/)  
+[![Flask](https://img.shields.io/badge/Flask-Framework-black)](https://flask.palletsprojects.com/)  
+[![SQLite](https://img.shields.io/badge/SQLite-Database-lightgrey)](https://www.sqlite.org/)  
 
-Sistema desenvolvido em **Python** com **Flask** e **SQLite**, para gerenciar pacientes, profissionais e consultas de uma clínica de saúde mental.
+Sistema desenvolvido em **Python** utilizando **Flask** e **SQLite**, com o objetivo de gerenciar pacientes, profissionais e consultas de uma clínica de saúde mental.
+
+---
+
+## 📚 Sobre o Projeto
+
+Este sistema foi desenvolvido como **projeto acadêmico** para a disciplina de **Programação para Dispositivos Móveis (Android)**.
+
+O objetivo do projeto é aplicar conceitos de desenvolvimento de sistemas, organização de rotas, banco de dados e interface web utilizando **Python, Flask e SQLite**.
+
+O projeto foi desenvolvido em **grupo** como parte das atividades da faculdade.
+
+---
+
+## 👨‍💻 Integrantes do Projeto
+
+```
+Gabriel Alves
+GitHub: https://github.com/Gb7Alves
+
+Breno Araujo
+GitHub: https://github.com/Oniugen
+
+Yann Gustavo
+GitHub: LINK_GITHUB
+
+Samuel Oliveira
+GitHub: LINK_GITHUB
+```
 
 ---
 
 ## 🌟 Funcionalidades
 
-[![Paciente](https://img.shields.io/badge/🧑‍⚕️-Pacientes-green)]()
-[![Profissional](https://img.shields.io/badge/👩‍⚕️-Profissionais-green)]()
-[![Consultas](https://img.shields.io/badge/📋-Consultas-blue)]()
-[![Agendamento](https://img.shields.io/badge/📅-Agendamento-yellow)]()
-[![Visualização](https://img.shields.io/badge/🔍-Visualização-lightgrey)]()
-
-- Cadastro de pacientes  
-- Cadastro de profissionais  
-- Registro de consultas  
-- Agendamento de consultas  
-- Visualização de informações de pacientes, profissionais e consultas  
+- 🧑‍⚕️ Cadastro de pacientes  
+- 👩‍⚕️ Cadastro de profissionais  
+- 📋 Registro de consultas  
+- 📅 Agendamento de consultas  
+- 🔍 Visualização de informações de pacientes, profissionais e consultas  
 
 ---
 
 ## 🛠 Tecnologias
 
-[![Python](https://img.shields.io/badge/Python-3.x-blue)]()
-[![Flask](https://img.shields.io/badge/Flask-1.1.2-orange)]()
-[![SQLite](https://img.shields.io/badge/SQLite-3.39.4-lightgrey)]()
-[![HTML](https://img.shields.io/badge/HTML-orange)]()
-[![CSS](https://img.shields.io/badge/CSS-blue)]()
+- Python 3.x  
+- Flask  
+- SQLite  
+- HTML  
+- CSS  
 
 ---
 
@@ -68,13 +90,4 @@ app/
 clinica.db
 requirements.txt
 run.py
-```
-
----
-
-## 📬 Contato
-
-```
-Gabriel Alves
-GitHub: https://github.com/Gb7Alves
 ```
