@@ -20,16 +20,20 @@ Sistema desenvolvido em **Python** com **Flask** e **SQLite**, para gerenciar pa
 
 ## 🛠 Tecnologias
 
-- **Python 3.x**  
-- **Flask**  
-- **SQLite**  
-- **HTML / CSS** (templates)
+- Python 3.x  
+- Flask  
+- SQLite  
+- HTML / CSS (templates)
 
 ---
 
-## 🚀 Como Executar
+## 🚀 Como Rodar o Sistema em Outro Computador
 
-1. Clone o repositório:
+Se você precisar apresentar ou rodar o sistema em outro computador (como na máquina do professor), siga estes passos:
+
+### **1️⃣ Copiar o projeto**
+Você tem duas opções:
+- **Clonar do GitHub** (recomendado):
 
 ```bash
 git clone https://github.com/Gb7Alves/clinica-saude-mental.git
